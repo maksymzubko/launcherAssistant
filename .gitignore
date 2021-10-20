@@ -1,0 +1,8 @@
+#DefaultIgnore
+/.git/
+*.md
+
+#VisualStudioIgnore
+/School/.vs/
+/School/bin/
+/School/obj/

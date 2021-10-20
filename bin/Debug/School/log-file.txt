@@ -1,0 +1,123 @@
+2021-10-20 19:44:01,584 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 19:44:02,603 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 19:46:06,335 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 19:46:14,057 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки создания отчетов
+2021-10-20 19:46:38,315 [1] DEBUG School.Forms.SmallForm [(null)] - Открытие англ формы
+2021-10-20 19:50:21,127 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 19:50:23,955 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 19:50:25,153 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 19:50:26,011 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 19:50:28,639 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки создания отчетов
+2021-10-20 19:50:53,690 [1] DEBUG School.Forms.SmallForm [(null)] - Открытие англ формы
+2021-10-20 19:50:57,177 [1] DEBUG School.Forms.ENGCreateForm [(null)] - Попытка сохранения информации
+2021-10-20 19:50:57,178 [1] DEBUG School.Forms.ENGCreateForm [(null)] - Информация сохранена
+2021-10-20 19:51:02,964 [1] DEBUG School.Forms.ENGCreateForm [(null)] - Попытка выгрузки информации
+2021-10-20 19:52:09,695 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 19:53:50,348 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 19:54:15,853 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 19:56:04,428 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:00:05,115 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:00:15,201 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки создания отчетов
+2021-10-20 20:02:13,478 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:02:14,736 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 20:10:31,754 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:10:34,514 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки создания отчетов
+2021-10-20 20:10:36,467 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:10:38,062 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:10:39,140 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:10:43,264 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки создания отчетов
+2021-10-20 20:10:45,729 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:10:46,698 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:10:47,517 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:11:19,232 [1] DEBUG School.Forms.CreateForm [(null)] - Попытка сохраниния информации
+2021-10-20 20:11:19,236 [1] DEBUG School.Forms.CreateForm [(null)] - Успешно сохранено!
+2021-10-20 20:11:25,414 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:20:06,445 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:20:09,897 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:20:11,287 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:20:12,279 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:20:20,127 [1] ERROR School.Forms.CreateForm [(null)] - Возникла ошибка Недопустимое значение DataGridViewComboBoxCell.
+2021-10-20 20:20:23,110 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:20:40,658 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:20:44,396 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:20:46,431 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:20:47,276 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:21:14,787 [1] ERROR School.Forms.CreateForm [(null)] - Возникла ошибка Недопустимое значение DataGridViewComboBoxCell.
+2021-10-20 20:22:29,050 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:22:32,518 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:22:33,626 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:22:34,451 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:23:00,883 [1] ERROR School.Forms.CreateForm [(null)] - Возникла ошибка Недопустимое значение DataGridViewComboBoxCell.
+2021-10-20 20:24:56,118 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:24:58,484 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:24:59,769 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:25:00,703 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:25:14,046 [1] ERROR School.Forms.CreateForm [(null)] - Возникла ошибка Недопустимое значение DataGridViewComboBoxCell.
+2021-10-20 20:26:34,359 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:34:03,106 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:34:05,473 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:34:06,704 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:34:07,627 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:34:13,517 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:34:14,396 [1] ERROR School.Forms.CreateForm [(null)] - Возникла ошибка Недопустимое значение DataGridViewComboBoxCell.
+2021-10-20 20:35:12,555 [1] ERROR School.Program [(null)] - Произошла ошибка: Ссылка на объект не указывает на экземпляр объекта.
+2021-10-20 20:35:12,555 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 20:35:15,900 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:35:19,088 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:35:22,157 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:35:23,050 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:35:26,356 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:35:30,287 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:35:33,551 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:36:42,109 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:36:45,113 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:36:46,775 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:36:48,417 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:37:05,411 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:37:06,330 [1] ERROR School.Forms.CreateForm [(null)] - Возникла ошибка Недопустимое значение DataGridViewComboBoxCell.
+2021-10-20 20:39:16,421 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:39:18,845 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:39:20,968 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:39:21,779 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:39:58,084 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:39:58,914 [1] ERROR School.Forms.CreateForm [(null)] - Возникла ошибка Недопустимое значение DataGridViewComboBoxCell.
+2021-10-20 20:42:11,761 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:42:14,265 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:42:15,937 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:42:16,794 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:44:02,898 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:44:05,620 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:44:06,866 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:44:07,708 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:44:41,525 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:44:42,362 [1] ERROR School.Forms.CreateForm [(null)] - Возникла ошибка Недопустимое значение DataGridViewComboBoxCell.
+2021-10-20 20:45:24,853 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:45:27,123 [1] DEBUG School.Form1 [(null)] - Нажатие кнопки просмотра отчетов
+2021-10-20 20:45:28,391 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:45:29,237 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:46:01,459 [1] DEBUG School.Forms.CreateForm [(null)] - Попытка сохраниния информации
+2021-10-20 20:46:01,464 [1] DEBUG School.Forms.CreateForm [(null)] - Успешно сохранено!
+2021-10-20 20:46:08,112 [1] DEBUG School.Forms.Preownedform [(null)] - Обновление DataGridView
+2021-10-20 20:46:10,429 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 20:51:24,346 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 20:51:25,592 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 22:16:01,292 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 22:16:03,905 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 22:18:38,456 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 22:18:41,533 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 22:27:48,957 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 22:27:51,271 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 22:28:18,180 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 22:28:19,267 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 22:32:01,403 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 22:32:02,905 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 22:32:24,982 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 22:32:27,314 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 22:34:15,227 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 22:34:16,442 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 22:34:23,787 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 22:34:25,809 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 22:35:01,208 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 22:35:03,674 [1] INFO  School.Program [(null)] - Програма завершена
+2021-10-20 23:06:56,194 [1] INFO  School.Program [(null)] - Програма запущена
+2021-10-20 23:07:00,511 [1] INFO  School.Program [(null)] - Програма завершена
