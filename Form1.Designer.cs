@@ -259,6 +259,7 @@
             this.label1.Size = new System.Drawing.Size(137, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "Готово к запуску\r\n";
+            this.label1.Visible = false;
             // 
             // customProgressBar1
             // 

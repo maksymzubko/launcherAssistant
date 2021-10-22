@@ -33,3 +33,9 @@ C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Debug\System.
 C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\obj\Debug\LauncherSchool.csproj.AssemblyReference.cache
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Debug\LauncherSchool.exe.manifest
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Debug\LauncherSchool.application
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\obj\Debug\LauncherSchool.TrustInfo.xml
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\obj\Debug\LauncherSchool.exe.manifest
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\obj\Debug\LauncherSchool.application
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\obj\Debug\LauncherSchool.csproj.CopyComplete

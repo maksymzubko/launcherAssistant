@@ -3,6 +3,17 @@ using System.Collections.Generic;
 
 namespace LauncherSchool
 {
+
+    public class Content
+    {
+        public string sha { get; set; }
+        public string node_id { get; set; }
+        public int size { get; set; }
+        public string url { get; set; }
+        public string content { get; set; }
+        public string encoding { get; set; }
+
+    }
     public class Links
     {
         public string self { get; set; }

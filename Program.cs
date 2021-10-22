@@ -1,18 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LauncherSchool
 {
     static class Program
     {
-        /// <summary>
-        /// Главная точка входа для приложения.
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -53,14 +47,22 @@ namespace LauncherSchool
                         SavedUser.ID = -1;
                         File.Delete(settingsPath);
                     }
-                        
                 }
             }
             else SavedUser.ID = -1;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Launcher());
+            try
+            {
+                Application.Run(new Launcher());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Возникла ошибка" + e.Message);
+                return;
+            }
+            
         }
     }
 }

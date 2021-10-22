@@ -33,3 +33,8 @@ C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Release\Syste
 C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Release\System.Memory.xml
 C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Release\System.Numerics.Vectors.xml
 C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Release\LauncherSchool.exe.manifest
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\bin\Release\LauncherSchool.application
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\obj\Release\LauncherSchool.TrustInfo.xml
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\obj\Release\LauncherSchool.exe.manifest
+C:\Users\negat\OneDrive\Рабочий стол\LauncherSchool\obj\Release\LauncherSchool.application

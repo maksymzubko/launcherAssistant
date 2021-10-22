@@ -14,6 +14,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using School.Data.CustomElements;
 
 namespace LauncherSchool
 {
@@ -25,18 +26,35 @@ namespace LauncherSchool
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
         }
 
-        public string version = "";
-        public string ServerVersion = "";
-        public string path = @"School\";
-        public string exeName = "School.exe";
-        public string urlContent = "https://api.github.com/repos/s1maxx/lAssistant/"; //will change
-        public string downloadLink = "";
-        public List<RootCommit> commits;
+        //public string versionSchool = "";
+        //public string ServerVersionSchool = "";
+        //public string pathSchool = @"School\";
+        //public string exeNameSchool = "School.exe";
+        //public string urlContentSchool = "https://api.github.com/repos/s1maxx/lAssistant/"; //will change
+        //public string downloadLinkSchool = "";
+        //public List<RootCommit> commitsSchool;
+        //
+        //public string versionAdmin = "";
+        //public string ServerVersionAdmin = "";
+        //public string pathAdmin = @"Admin\";
+        //public string exeNameAdmin = "Admin.exe";
+        //public string urlContentAdmin = "https://api.github.com/repos/s1maxx/lAssistant/"; //will change
+        //public string downloadLinkAdmin = "";
+
+        public List<RootCommit> Commits;
+        public List<RootContent> Contents;
+        public string urlContent = "https://api.github.com/repos/s1maxx/RepoForLauncher/";
+        public string versionAdmin = "";
+        public string versionSchool = "";
+        public Versions Versions;
 
         bool isDownloading = false;
 
         void changeLabel(string name, Color color)
         {
+            if (!label1.Visible)
+                label1.Visible = true;
+
             label1.Text = name;
             label1.ForeColor = color;
         }
@@ -49,7 +67,7 @@ namespace LauncherSchool
 
             Label lastLabel = null;
 
-            foreach (var root in commits.Select((value, i) => new { i, value}))
+            foreach (var root in Commits.Select((value, i) => new { i, value}))
             {
                 var label = new Label()
                 {
@@ -89,102 +107,112 @@ namespace LauncherSchool
         {
             Label lbl = (Label)sender;
             if (MessageBox.Show("Вы уверены что хотите перейти по текущей версии?", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                Process.Start(commits.FirstOrDefault(c => c.sha.Equals(valuePairs.FirstOrDefault(l => l.Value == lbl).Key)).html_url);
+                Process.Start(Commits.FirstOrDefault(c => c.sha.Equals(valuePairs.FirstOrDefault(l => l.Value == lbl).Key)).html_url);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (SavedUser.ID == -1) 
+            CheckForVersions();
+
+            if (Application.ProductVersion != Versions.LauncherVersion)
+            {
+                MessageBox.Show("Обнаружена более новая версия лаунчера. Сейчас он будет обновлен и автоматически перезапущен.");
+                if (!Directory.Exists(@"Updater\"))
+                {
+                    MessageBox.Show("К сожалению не был найден Updater");
+                    Application.Exit();
+                }
+
+                using (WebClient wc = new WebClient())
+                {
+                    wc.DownloadFileCompleted += (o, args) =>
+                    {
+                        try
+                        {
+                            Process.Start(@"Updater\Updater.exe", "LauncherSchool.exe");
+                            Process.GetCurrentProcess().Kill();
+                        }
+                        catch (Exception) { }
+                    };
+
+                    wc.DownloadFileTaskAsync(Contents.FirstOrDefault(cnt=>cnt.name.Contains("Launcher")).download_url, $"Updater\\Launcher.zip");
+                }
+            }
+
+            customComboBox1.OnSelectedIndexChanged += CustomComboBox1_OnSelectedIndexChanged;
+
+            if (SavedUser.ID == -1)
+            {
                 panel2.Visible = true;
+                customButton1.Text = "Авторизация";
+                customButton1.Click += Auth;
+            }
             else
             {
                 panel3.Visible = true;
                 label5.Text += " " + SavedUser.ID;
 
-                customComboBox1.SelectedIndex = 0;
                 if(new Encrypter().isAdmin(SavedUser.ID))
                 customComboBox1.Items.Add("AdminAssistant (Close)");
+                customComboBox1.SelectedIndex = 0;
             }
+        }
 
-            var fullPath = Path.GetFullPath(path + exeName);
-            if (!File.Exists(fullPath))
+        private void CustomComboBox1_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool isIdentity = false;
+
+            string fullPath = "";
+
+            if (customComboBox1.SelectedItem == "SchoolAssistant")
             {
-                RegistryKey key;
-                key = Registry.CurrentUser.CreateSubKey("School");
-                key.SetValue("version", "none");
-                key.Close();
-                version = "none";
-            }
-            else
-                version = (string)Registry.CurrentUser.OpenSubKey("School").GetValue("version");
+                if (!customButton1.Enabled)
+                    customButton1.Enabled = true;
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlContent + "contents");
-            request.UserAgent = System.Environment.MachineName+"1";
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                fullPath = Path.GetFullPath("School\\" + "School.exe");
 
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                Stream recivestream = response.GetResponseStream();
-                StreamReader reader = null;
-                if (response.CharacterSet == null)
-                    reader = new StreamReader(recivestream);
-                else
-                    reader = new StreamReader(recivestream, Encoding.GetEncoding(response.CharacterSet));
-
-                string dataTemp = reader.ReadToEnd();
-
-                var service = JsonConvert.DeserializeObject<List<RootContent>>(dataTemp)[0];
-
-                downloadLink = service.download_url;
-
-                var fileName = service.name;
-
-                var index1 = fileName.IndexOf("ver") + 4;
-                var index2 = fileName.LastIndexOf(".zip");
-                ServerVersion = fileName.Replace(fileName, fileName.Substring(index1, index2 - index1));
-                response.Close();
-                reader.Close();
-            }
-            else
-            {
-                MessageBox.Show("К сожалению возникла ошибка, статус код: "+response.StatusCode);
-                return;
-            }
-
-            request = (HttpWebRequest)WebRequest.Create(urlContent + "commits");
-            request.UserAgent = "[SchoolUserAgent]";
-            response = (HttpWebResponse)request.GetResponse();
-
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                Stream recivestream = response.GetResponseStream();
-                StreamReader reader = null;
-                if (response.CharacterSet == null)
-                    reader = new StreamReader(recivestream);
-                else
-                    reader = new StreamReader(recivestream, Encoding.GetEncoding(response.CharacterSet));
-
-                string dataTemp = reader.ReadToEnd();
-
-                commits = JsonConvert.DeserializeObject<List<RootCommit>>(dataTemp);
-
-                if (commits.Count > 0)
-                    PushCommitsIntoLbls();
-
-                response.Close();
-                reader.Close();
-            }
-            else
-            {
-                new Label()
+                if (!File.Exists(fullPath))
                 {
-                    Location = new Point(label2.Location.X, label2.Location.Y - 20),
-                    Parent = panel1,
-                    Text = "Ошибка подключения: " + response.StatusCode
-                };
+                    RegistryKey key;
+                    key = Registry.CurrentUser.CreateSubKey("School");
+
+                    versionSchool = "none";
+
+                    key.SetValue("versionSchool", versionSchool);
+                    key.Close();
+                }
+                else
+                    versionSchool = (string)Registry.CurrentUser.OpenSubKey("School").GetValue("versionSchool");
+
+                isIdentity = Versions.SchoolVersion == versionSchool;
+            }
+            else
+            {
+                customButton1.Enabled = false; //WILL BE DELETED
+                MessageBox.Show("В данный момент это приложение в разработке!"); //WILL BE DELETED
+
+                fullPath = Path.GetFullPath("Admin\\" + "Admin.exe");
+
+                if (!File.Exists(fullPath))
+                {
+                    RegistryKey key;
+                    key = Registry.CurrentUser.CreateSubKey("School");
+
+                    versionAdmin = "none";
+
+                    key.SetValue("versionAdmin", versionAdmin);
+                    key.Close();
+                }
+                else
+                    versionAdmin = (string)Registry.CurrentUser.OpenSubKey("School").GetValue("versionAdmin");
+
+                isIdentity = Versions.AdminVersion == versionAdmin;
             }
 
-            if (version != ServerVersion)
+            customButton1.Click -= UpdateEvent;
+            customButton1.Click -= Play;
+
+            if (!isIdentity)
             {
                 if (File.Exists(fullPath))
                 {
@@ -201,20 +229,121 @@ namespace LauncherSchool
             }
             else
             {
-                if (SavedUser.ID != -1)
-                {
-                    customButton1.Text = "Запустить";
-                    customButton1.Click += Play;
-                    changeLabel("Готово к запуску", Color.LightGreen);
-                    customProgressBar1.Value = 100;
-                }
+                customButton1.Text = "Запустить";
+                customButton1.Click += Play;
+                changeLabel("Готово к запуску", Color.LightGreen);
+                customProgressBar1.Value = 100;
+            }
+        }
+
+        private bool GetConnection()
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlContent + "commits");
+            request.UserAgent = "[SchoolUserAgent]";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream recivestream = response.GetResponseStream();
+                StreamReader reader = null;
+                if (response.CharacterSet == null)
+                    reader = new StreamReader(recivestream);
                 else
+                    reader = new StreamReader(recivestream, Encoding.GetEncoding(response.CharacterSet));
+
+                string dataTemp = reader.ReadToEnd();
+
+                Commits = JsonConvert.DeserializeObject<List<RootCommit>>(dataTemp);
+
+                if (Commits.Count > 0)
+                    PushCommitsIntoLbls();
+
+                response.Close();
+                reader.Close();
+                return true;
+            }
+            else
+            {
+                new Label()
                 {
-                    customButton1.Text = "Авторизация";
-                    customButton1.Click += Auth;
-                    changeLabel("Готово к запуску", Color.LightGreen);
-                    customProgressBar1.Value = 100;
-                }
+                    Location = new Point(label2.Location.X, label2.Location.Y - 20),
+                    Parent = panel1,
+                    Text = "Ошибка подключения: " + response.StatusCode
+                };
+                return false;
+            }
+        }
+
+        private Versions GetVersions(List<RootContent> rootContents)
+        {
+            string versionsLink = rootContents.FirstOrDefault(ver => ver.name.Contains("versions")).git_url;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(versionsLink);
+            request.UserAgent = System.Environment.MachineName + "2";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream recivestream = response.GetResponseStream();
+                StreamReader reader = null;
+                if (response.CharacterSet == null)
+                    reader = new StreamReader(recivestream);
+                else
+                    reader = new StreamReader(recivestream, Encoding.GetEncoding(response.CharacterSet));
+
+                string dataTemp = reader.ReadToEnd();
+
+                Content content = JsonConvert.DeserializeObject<Content>(dataTemp);
+
+                Versions versions = JsonConvert.DeserializeObject<Versions>(Encoding.UTF8.GetString(Convert.FromBase64String(content.content)));
+
+                response.Close();
+                reader.Close();
+
+                return versions;
+            }
+            else
+            {
+                MessageBox.Show("К сожалению возникла ошибка, статус код: " + response.StatusCode);
+                return null;
+            }
+        }
+
+        private void CheckForVersions()
+        {
+            if (!GetConnection())
+            {
+                MessageBox.Show("Ошибка приложения, возможно из-за качества интернета, пожалуйста проверьте подлючены ли вы к интернету. Приложение будет завершено!");
+                Application.Exit();
+            }
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlContent + "contents");
+            request.UserAgent = System.Environment.MachineName + "1";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream recivestream = response.GetResponseStream();
+                StreamReader reader = null;
+                if (response.CharacterSet == null)
+                    reader = new StreamReader(recivestream);
+                else
+                    reader = new StreamReader(recivestream, Encoding.GetEncoding(response.CharacterSet));
+
+                string dataTemp = reader.ReadToEnd();
+
+                Contents = JsonConvert.DeserializeObject<List<RootContent>>(dataTemp);
+
+                Versions = GetVersions(Contents);
+
+                response.Close();
+                reader.Close();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка приложения, возможно из-за качества интернета, пожалуйста проверьте подлючены ли вы к интернету. Приложение будет завершено!");
+                Application.Exit();
             }
         }
 
@@ -223,13 +352,26 @@ namespace LauncherSchool
             isDownloading = false;
             customButton1.Enabled = true;
 
-            if (File.Exists("School.zip"))
-                File.Delete("School.zip");
+            string fileName = "";
+            string directoryName = "";
 
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
+            if (customComboBox1.SelectedItem == "SchoolAssistant")
+            {
+                fileName = "School";
+                directoryName = @"School\";
+            }
+            else
+            {
+                fileName = "Admin";
+                directoryName = @"Admin\";
+            }
+            if (File.Exists($"{fileName}.zip"))
+                File.Delete($"{fileName}.zip");
 
-            DirectoryInfo dir = new DirectoryInfo(Path.GetFullPath(path));
+            if (!Directory.Exists(directoryName)) 
+                Directory.CreateDirectory(directoryName);
+
+            DirectoryInfo dir = new DirectoryInfo(Path.GetFullPath(directoryName));
             foreach (var item in dir.GetFiles())
                 item.Delete();
 
@@ -248,14 +390,19 @@ namespace LauncherSchool
                     customProgressBar1.Value = g.ProgressPercentage;
                     if (g.ProgressPercentage == 100)
                     {
-                        if (!File.Exists(Path.GetFullPath(path + exeName)))
+                        if (!File.Exists(Path.GetFullPath(directoryName + fileName + ".exe")))
                         {
-                            ZipFile.ExtractToDirectory("School.zip", path);
+                            ZipFile.ExtractToDirectory($"{fileName}.zip", directoryName);
                             RegistryKey key;
                             key = Registry.CurrentUser.CreateSubKey("School");
-                            key.SetValue("version", ServerVersion);
+                            key.SetValue("version"+fileName, fileName == "Admin"  ? Versions.AdminVersion : Versions.SchoolVersion);
                             key.Close();
-                            version = ServerVersion;
+
+                            if (fileName == "Admin")
+                                versionAdmin = Versions.AdminVersion;
+                            else
+                                versionSchool = Versions.SchoolVersion;
+
                             changeLabel("Готово к запуску", Color.Green);
 
                             if (SavedUser.ID != -1)
@@ -274,7 +421,7 @@ namespace LauncherSchool
                     }
                 };
 
-                wc.DownloadFileTaskAsync(new Uri(downloadLink), "School.zip");
+                wc.DownloadFileTaskAsync(new Uri(Contents.FirstOrDefault(cnt=>cnt.name.Contains(fileName)).download_url), $"{fileName}.zip");
             }
         }
 
@@ -324,10 +471,7 @@ namespace LauncherSchool
                     customComboBox1.SelectedIndex = 0;
                     if (new Encrypter().isAdmin(SavedUser.ID))
                         customComboBox1.Items.Add("AdminAssistant (Close)");
-
-                    customButton1.Click -= Auth;
-                    customButton1.Text = "Запустить";
-                    customButton1.Click += Play;
+                    CustomComboBox1_OnSelectedIndexChanged(customComboBox1,null);
                 }
             }
         }
@@ -345,8 +489,8 @@ namespace LauncherSchool
                 currentCulture = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd()).CurrentCulture;
             }
 
-            Process.Start(path + exeName, $"{currentCulture};{SavedUser.ID};{new Encrypter().Decrypt(SavedUser.Password)}");
-            Application.Exit();
+            //Process.Start(pathSchool + exeNameSchool, $"{currentCulture};{SavedUser.ID};{new Encrypter().Decrypt(SavedUser.Password)}");
+            //Application.Exit();
         }
 
         private void Launcher_Paint(object sender, PaintEventArgs e)
@@ -385,6 +529,8 @@ namespace LauncherSchool
             label5.Text = "Ваш ID:";
 
             customButton1.Click -= Play;
+            customButton1.Click -= UpdateEvent;
+            label1.Visible = false;
             customButton1.Text = "Авторизация";
             customButton1.Click += Auth;
         }
