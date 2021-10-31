@@ -9,6 +9,5 @@ namespace LauncherSchool
     static public class SavedUser
     {
         static public int ID { get; set; }
-        static public string Password { get; set; }
     }
 }

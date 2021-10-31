@@ -26,21 +26,6 @@ namespace LauncherSchool
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
         }
 
-        //public string versionSchool = "";
-        //public string ServerVersionSchool = "";
-        //public string pathSchool = @"School\";
-        //public string exeNameSchool = "School.exe";
-        //public string urlContentSchool = "https://api.github.com/repos/s1maxx/lAssistant/"; //will change
-        //public string downloadLinkSchool = "";
-        //public List<RootCommit> commitsSchool;
-        //
-        //public string versionAdmin = "";
-        //public string ServerVersionAdmin = "";
-        //public string pathAdmin = @"Admin\";
-        //public string exeNameAdmin = "Admin.exe";
-        //public string urlContentAdmin = "https://api.github.com/repos/s1maxx/lAssistant/"; //will change
-        //public string downloadLinkAdmin = "";
-
         public List<RootCommit> Commits;
         public List<RootContent> Contents;
         public string urlContent = "https://api.github.com/repos/s1maxx/RepoForLauncher/";
@@ -116,26 +101,33 @@ namespace LauncherSchool
 
             if (Application.ProductVersion != Versions.LauncherVersion)
             {
-                MessageBox.Show("Обнаружена более новая версия лаунчера. Сейчас он будет обновлен и автоматически перезапущен.");
-                if (!Directory.Exists(@"Updater\"))
+                if (MessageBox.Show("Обнаружена более новая версия лаунчера. Обновить?", "Оп-па",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("К сожалению не был найден Updater");
-                    Application.Exit();
-                }
-
-                using (WebClient wc = new WebClient())
-                {
-                    wc.DownloadFileCompleted += (o, args) =>
+                    if (!Directory.Exists(@"Updater\"))
                     {
-                        try
+                        MessageBox.Show("К сожалению не был найден Updater");
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        if (File.Exists(@"Updater\Launcher.zip"))
+                            File.Delete(@"Updater\Launcher.zip");
+                    }
+                    using (WebClient wc = new WebClient())
+                    {
+                        wc.DownloadFileCompleted += (o, args) =>
                         {
-                            Process.Start(@"Updater\Updater.exe", "LauncherSchool.exe");
-                            Process.GetCurrentProcess().Kill();
-                        }
-                        catch (Exception) { }
-                    };
+                            try
+                            {
+                                Process.Start(@"Updater\Updater.exe", "LauncherSchool.exe");
+                                Process.GetCurrentProcess().Kill();
+                            }
+                            catch (Exception) { }
+                        };
 
-                    wc.DownloadFileTaskAsync(Contents.FirstOrDefault(cnt=>cnt.name.Contains("Launcher")).download_url, $"Updater\\Launcher.zip");
+                        wc.DownloadFileTaskAsync(Contents.FirstOrDefault(cnt => cnt.name.Contains("Launcher")).download_url, $"Updater\\Launcher.zip");
+                    }
                 }
             }
 
@@ -172,17 +164,9 @@ namespace LauncherSchool
                 fullPath = Path.GetFullPath("School\\" + "School.exe");
 
                 if (!File.Exists(fullPath))
-                {
-                    RegistryKey key;
-                    key = Registry.CurrentUser.CreateSubKey("School");
-
                     versionSchool = "none";
-
-                    key.SetValue("versionSchool", versionSchool);
-                    key.Close();
-                }
                 else
-                    versionSchool = (string)Registry.CurrentUser.OpenSubKey("School").GetValue("versionSchool");
+                    versionSchool = Application.ProductVersion;
 
                 isIdentity = Versions.SchoolVersion == versionSchool;
             }
@@ -432,13 +416,13 @@ namespace LauncherSchool
 
             if (panel2.Visible)
             {
-                if (textBox1.Text == "" || textBox2.Text == "")
+                if (textBox1.Text == "")
                 {
                     MessageBox.Show("Заполните все поля!");
                     return;
                 }
 
-                if (!encrypter.CheckUser(Convert.ToInt16(textBox1.Text), textBox2.Text))
+                if (!encrypter.CheckUser(Convert.ToInt16(textBox1.Text)))
                 {
                     MessageBox.Show("Введены неверные данные!");
                     return;
@@ -446,14 +430,12 @@ namespace LauncherSchool
                 else
                 {
                     SavedUser.ID = Convert.ToInt16(textBox1.Text);
-                    SavedUser.Password = encrypter.Encrypt(textBox2.Text);
 
                     if (checkBox1.Checked)
                     {
                         File.WriteAllText(userPath, JsonConvert.SerializeObject(new User()
                         {
-                            ID = SavedUser.ID,
-                            Password = SavedUser.Password
+                            ID = SavedUser.ID
 
                         }));
                     }
@@ -478,6 +460,12 @@ namespace LauncherSchool
 
         private void Play(object sender, EventArgs e)
         {
+            string path = "";
+
+            if (customComboBox1.SelectedItem == "SchoolAssistant")
+                path = "School\\School.exe";
+            else path = "Admin\\Admin.exe";
+
             if(File.Exists("School.zip"))
             File.Delete("School.zip");
 
@@ -489,8 +477,8 @@ namespace LauncherSchool
                 currentCulture = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd()).CurrentCulture;
             }
 
-            //Process.Start(pathSchool + exeNameSchool, $"{currentCulture};{SavedUser.ID};{new Encrypter().Decrypt(SavedUser.Password)}");
-            //Application.Exit();
+            Process.Start(path, $"{currentCulture};{SavedUser.ID};");
+            Application.Exit();
         }
 
         private void Launcher_Paint(object sender, PaintEventArgs e)

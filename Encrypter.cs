@@ -23,13 +23,13 @@ namespace LauncherSchool
             Connection = new MySqlConnection(connstring);
         }
 
-        public bool CheckUser(int id, string pass)
+        public bool CheckUser(int id)
         {
             CreateConnection();
 
             bool tempResult = false;
 
-            string request = $"Select * FROM Teacher where Teacher_ID = {id} and Pass = '{pass}'";
+            string request = $"Select * FROM Teacher where Teacher_ID = {id}";
             Connection.Open();
             var command = new MySqlCommand(request, Connection);
             var reader = command.ExecuteReader();

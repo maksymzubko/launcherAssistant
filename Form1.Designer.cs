@@ -64,6 +64,8 @@
             this.customPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(22)))), ((int)(((byte)(132)))));
             this.customPanel1.Controls.Add(this.panel3);
             this.customPanel1.Controls.Add(this.panel2);
+            this.customPanel1.Controls.Add(this.textBox2);
+            this.customPanel1.Controls.Add(this.label4);
             this.customPanel1.Controls.Add(this.settings);
             this.customPanel1.Controls.Add(this.panel1);
             this.customPanel1.Controls.Add(this.label1);
@@ -81,7 +83,7 @@
             this.panel3.Controls.Add(this.customComboBox1);
             this.panel3.Controls.Add(this.customButton2);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(629, 409);
+            this.panel3.Location = new System.Drawing.Point(633, 411);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(356, 106);
             this.panel3.TabIndex = 18;
@@ -154,8 +156,6 @@
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.checkBox1);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(633, 464);
             this.panel2.Name = "panel2";
@@ -166,9 +166,9 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(9, 20);
+            this.textBox1.Location = new System.Drawing.Point(72, 20);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 31);
+            this.textBox1.Size = new System.Drawing.Size(136, 31);
             this.textBox1.TabIndex = 12;
             // 
             // checkBox1
@@ -188,29 +188,31 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(147, 20);
+            this.textBox2.Location = new System.Drawing.Point(837, 427);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(138, 31);
             this.textBox2.TabIndex = 13;
+            this.textBox2.Visible = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(144, 1);
+            this.label4.Location = new System.Drawing.Point(834, 408);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 16);
             this.label4.TabIndex = 15;
             this.label4.Text = "Пароль";
+            this.label4.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(6, 1);
+            this.label3.Location = new System.Drawing.Point(69, 1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 16);
             this.label3.TabIndex = 14;
