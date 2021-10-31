@@ -78,4 +78,3 @@ C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\obj\Release\La
 C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\obj\Release\LauncherSchool.application
 C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\obj\Release\LauncherSchool.exe
 C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\obj\Release\LauncherSchool.pdb
-C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\obj\Release\LauncherSchool.csproj.CopyComplete

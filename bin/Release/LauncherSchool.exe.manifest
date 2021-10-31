@@ -115,14 +115,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LauncherSchool.exe" size="122792">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LauncherSchool.exe" size="122280">
       <assemblyIdentity name="LauncherSchool" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Tsxvamdyv7YiImuXX6AVoNoEwXmae2NrTEj8XJ/tKwE=</dsig:DigestValue>
+        <dsig:DigestValue>UYlEW/R/6+k6/EEcYPNODqS4DKBLlLpRObO+LGNwkgs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

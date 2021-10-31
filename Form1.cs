@@ -32,9 +32,6 @@ namespace LauncherSchool
         public string versionAdmin = "";
         public string versionSchool = "";
         public Versions Versions;
-
-        bool isDownloading = false;
-
         void changeLabel(string name, Color color)
         {
             if (!label1.Visible)
@@ -333,7 +330,6 @@ namespace LauncherSchool
 
         private void UpdateEvent(object sender, EventArgs e)
         {
-            isDownloading = false;
             customButton1.Enabled = true;
 
             string fileName = "";

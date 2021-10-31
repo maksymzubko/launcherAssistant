@@ -35,12 +35,11 @@ namespace LauncherSchool
                     var itemUser = JsonConvert.DeserializeObject<User>(content);
 
                     var encrypter = new Encrypter();
-                    bool isExistUser = encrypter.CheckUser(itemUser.ID, encrypter.Decrypt(itemUser.Password));
+                    bool isExistUser = encrypter.CheckUser(itemUser.ID);
 
                     if (isExistUser)
                     {
                         SavedUser.ID = itemUser.ID;
-                        SavedUser.Password = itemUser.Password;
                     }
                     else
                     {
