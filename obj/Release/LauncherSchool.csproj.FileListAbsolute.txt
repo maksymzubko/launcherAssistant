@@ -67,7 +67,6 @@ C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\bin\Release\Sy
 C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\bin\Release\System.Memory.xml
 C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\bin\Release\System.Numerics.Vectors.xml
 C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\obj\Release\LauncherSchool.csproj.AssemblyReference.cache
 C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\obj\Release\LauncherSchool.Launcher.resources
 C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\obj\Release\LauncherSchool.Properties.Resources.resources
 C:\Users\negat\OneDrive\Рабочий стол\launcherAssistant\obj\Release\LauncherSchool.SettingsForm.resources

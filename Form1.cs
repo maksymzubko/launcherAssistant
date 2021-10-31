@@ -518,5 +518,12 @@ namespace LauncherSchool
             customButton1.Text = "Авторизация";
             customButton1.Click += Auth;
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var currKey = (char)e.KeyChar;
+            if (!char.IsDigit(currKey) && currKey != (char) Keys.Back)
+                e.Handled = true;
+        }
     }
 }
